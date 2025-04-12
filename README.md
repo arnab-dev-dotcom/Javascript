@@ -1,3 +1,3 @@
 # Javascript
-You can learn our scripting tutorial easily
-Author: Arnab Chowdhury
+You can learn our scripting tutorial easily. Thankyou<br>
+<p><b>Author: Arnab Chowdhury</b></p>
