@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JAVASCRIPT</title>
+  </head>
+  <body>
+    <h1>MAP</h1>
+    <p>
+      In JavaScript, the Map object is a collection of key-value pairs where
+      both the keys and values can be any data type. It provides a more flexible
+      and efficient alternative to plain objects for storing data in situations
+      where you need to maintain the order of elements or use non-string keys.
+    </p>
+
+    <p>
+      <b>Summary of Key Advantages:</b><br />
+
+      Insertion order is guaranteed.<br />
+
+      Supports any data type as keys, including objects and functions.<br />
+
+      Built-in methods for easy manipulation and checks.<br />
+
+      Better performance for frequent additions and deletions of key-value
+      pairs.<br />
+
+      Direct iteration with forEach() and for...of.<br />
+
+      Clearer intent and API when using dynamic key-value pairs.<br />
+    </p>
+
+    <h1>SET</h1>
+    <p>
+      In JavaScript, a Set is a collection of unique values. It allows you to
+      store any type of value, whether primitive values or objects, and ensures
+      that no duplicates are stored.
+    </p>
+  </body>
+  <script type="text/javascript">
+    let myMap = new Map();
+
+    // Using set() to add key-value pairs
+    myMap.set("fname", "Arnab");
+    myMap.set("lname", "Chowdhury");
+    myMap.set("profession", "Software Developer");
+    myMap.set("age", "25");
+    myMap.set(2, "This my radical number");
+    myMap.set(2, "Radical Number");
+
+    console.log(`Mapped size is ${myMap.size}`);
+
+    // Output the map
+    console.log(myMap);
+
+    // Accessing a value using get()
+    console.log(myMap.get("fname") ?? "Something went wrong");
+    console.log(myMap.get("age"));
+
+    //Checking if a key exists in a Map
+    console.log(myMap.has("profession")); // Output: false
+    console.log(myMap.has("salary")); // Output: true
+
+    myMap.delete("age"); // Removes the 'age' key-value pair
+    console.log(myMap);
+
+    myMap.clear(); // Removes all key-value pairs from the map
+    console.log(myMap); // Output: Map(0) {}
+
+    myMap.set("name", "John");
+    myMap.set("age", 30);
+    myMap.set("job", "Developer");
+
+    // Using forEach() to iterate through the map
+    myMap.forEach((value, key) => {
+      console.log(key + ": " + value);
+    });
+
+    // Using for...of loop with destructuring
+    for (let [k, v] of myMap) {
+      console.log(`\n ${k} => ${v}`);
+    }
+
+    myMap.clear(); // Removes all key-value pairs from the map
+    console.log(myMap); // Output: Map(0) {}
+
+    let mySet = new Set([1, 2, 3, 4, 5]);
+    console.log(mySet); // Output: Set { 1, 2, 3, 4, 5 }
+
+    mySet.add(25);
+    mySet.add(250);
+    mySet.add(325);
+    mySet.add(235);
+    mySet.add("dd");
+    mySet.add("Arnab Chowdhury");
+
+    console.log(mySet);
+
+    mySet.forEach((value) => {
+      console.log("Using ES6 Iteration", value);
+    });
+
+    for (let value of mySet) {
+      console.log("Using Traditional Iteration", value);
+    }
+  </script>
+</html>

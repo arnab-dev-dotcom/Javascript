@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async JS</title>
+  </head>
+  <body>
+    <h1>Async JS</h1>
+    <p>
+      JavaScript is single-threaded, meaning it executes one task at a time.
+      However, asynchronous operations allow JavaScript to handle multiple tasks
+      without blocking the main thread (non-blocking execution). This is crucial
+      for handling tasks like fetching data from APIs, reading files, or
+      handling user input efficiently.
+    </p>
+  </body>
+  <script>
+    console.log("1");
+    console.log("2");
+    console.log("3");
+    let callapi = (callfun) => {
+      //XMLHTTPREQUEST
+      // 0 UNSENT client has been created open() not called yet
+      // 1 OPENED open() has been called
+      // 2 HEADERS_RECEIVED send() has been called, and headers
+      // 3 LOADING downloading; responseText holds partial data
+      // 4 DONE The operation is complete
+      var xhttp = new XMLHttpRequest();
+      //console.log(xhttp);
+      xhttp.addEventListener("readystatechange", () => {
+        //console.log(xhttp,xhttp.readyState)
+        if (xhttp.readyState === 4 && xhttp.status == 200) {
+          //console.log(xhttp.responseText)
+          //console.log(xhttp.status)
+          const datas = JSON.parse(xhttp.responseText);
+          callfun(undefined, datas);
+        } else if (xhttp.readyState === 4) {
+          callfun("Data could not be fetch", undefined);
+        }
+      });
+      //set up the request
+      xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts");
+      xhttp.send(); //sending the request
+    };
+
+    //Asynchronous code
+    callapi((error, data) => {
+      //It take the time for execute
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(data);
+      }
+    });
+
+    console.log("4");
+    console.log("5");
+  </script>
+</html>

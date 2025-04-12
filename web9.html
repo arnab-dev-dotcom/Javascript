@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ES6 (ECMA SCRIPT)</title>
+  </head>
+  <body>
+    <h1>ES6</h1>
+    ES6 (ECMAScript 2015) is a significant update to JavaScript that introduced
+    many new features and improvements, making the language more powerful and
+    easier to work with. Some of the most notable features of ES6 include:
+
+    <ol>
+      <li>
+        <b>Destructuring Assignment</b>
+        <p>
+          &nbsp; Allows unpacking values from arrays or objects into distinct
+          variables.
+        </p>
+      </li>
+      <li>
+        <b> Spread Operators</b>
+        <p>Spread ... allows you to unpack elements from an array or object.</p>
+      </li>
+      <li>
+        <b> Reset Operators</b>
+        <p>
+          Reset ... allows get element and pack them into an array or object.
+        </p>
+      </li>
+      <li>
+        <b>Nullish Operator</b>
+        <p>
+          The nullish coalescing operator (??) in JavaScript is used to provide
+          a default value when dealing with null or undefined. It returns the
+          right-hand operand only if the left-hand operand is null or undefined;
+          otherwise, it returns the left-hand operand.
+        </p>
+      </li>
+      <li>
+        <b>Optional Chaining (?.)</b>
+        <p>
+          In JavaScript The optional chaining (?.) operator allows you to safely
+          access deeply nested object properties without throwing an error if a
+          property is null or undefined. If the property exists, it returns its
+          value; otherwise, it returns undefined.
+        </p>
+      </li>
+      <li>
+        <b>Set</b>
+        <p>
+          A Set in JavaScript is a built-in object that allows you to store
+          unique values of any type (primitive or object). It automatically
+          removes duplicates.
+        </p>
+      </li>
+      <li>
+        ✔ Use for...in when looping over objects. ✔ Use for...of when looping
+        over arrays, strings, Maps, or Sets.
+      </li>
+    </ol>
+  </body>
+  <script>
+    const person = { name: "John", age: 30 };
+    const { name, age } = person; //here variable name should be put same as a object properties
+    //if you do the rename then {properties_name:new name}
+    let { name: n, age: a } = person;
+    console.log(n);
+
+    const numbers = [1, 2, 3];
+    const [first, second] = numbers;
+    let openhours = {
+      sunday: { open: "09:00 AM", close: "11:00 PM" },
+      monday: { open: "10:00 AM", close: "10:00 PM" },
+    };
+
+    let hotels = {
+      name: "5 STAR Hotel",
+      Location: "Tarakeswar",
+      categories: ["Indian", "American", "England"],
+      openhours,
+    };
+
+    let nums = [1, 2, 3, 4, 5];
+    console.log(...nums);
+    //use case
+    let newarr = [1, 2, 30, ...nums]; //join a array to another array
+    console.log(newarr);
+    //update object
+    let updatemainenu = [...hotels.categories, "Russian", "Afgani"];
+    console.log(updatemainenu);
+
+    let numss = [10, 20, 3, 0, 40, "Arnab Chowdhury"];
+    console.log(numss);
+    let [des1, des2, ...rest] = numss;
+    console.log(rest); //Here remnaing elemnet are bind into the another array
+
+    //Nullish operator
+    let fname = null;
+    let defaultName = "Guest";
+
+    let user = fname ?? defaultName; // "Guest"
+    console.log(user);
+    console.log(hotels.openhours.sunday);
+
+    let people = {
+      name: "Alice",
+      address: {
+        city: "New York",
+      },
+    };
+
+    console.log(people.address?.city); // "New York"
+    console.log(people.address?.country); // undefined (instead of an error)
+    console.log(people.contact?.email); // undefined (no error)
+
+    //object key value iterate
+
+    for (let k in hotels) {
+      console.log(`${k}: ${hotels[k]}`);
+    }
+
+    console.log(Object.values(hotels));
+
+    let o = Object.entries(openhours);
+    console.log(o);
+    for (let [day, { open, close }] of o) {
+      console.log(`${day} ${open} ${close}`);
+    }
+  </script>
+</html>

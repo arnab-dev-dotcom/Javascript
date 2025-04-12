@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 1</title>
+</head>
+<body>
+    <h1>HELLO WORLD</h1>
+    <p id="ad"> Welcome to my coding world</p>
+    <h2> I like to Code and Debug</h2>
+    <h2 id="content">CREATE YOUR OWN PERSONALITY</h2>
+    <p class="subs">Hey How are you</p>
+    <a href="https://www.youtube.com/watch?v=lGmRnu--iU8&t=14984s" id="link">JAVASCRIPT CHANNEL LINK</a>
+
+    <div class="my-cls" id="my-cls">
+        <h2>Hi, Programmer</h2>
+    </div>
+    <div id="pcs">
+        <p id="sib1">Sibling 1</p>
+        <p id="sib2">Sibling 2</p>
+        <p id="sib3">Sibling 3</p>
+        <div id="pcs1">
+            <p>Child of pcs1 id</p>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    //print the data into the console
+console.log("hello world");
+/*
+-----------Variable-----------
+we can define the variable like var, let const
+using var we can redeclare and reassign the data
+using let we canot redeclare but reassign the data
+using const we cannot redeclare and reassign the data
+
+
+
+------------ Datatype--------------------
+
+Number - 0,1,2,3,4,5.35
+String - 'Arnab', "Arnab Chowdhury"
+Boolean - TRUE/FALSE
+Null - Which denote empty
+Object - Multiple type of data assign
+*/
+
+/* --------- String -------------*/
+//string is immutable
+let fname = "Arnab";
+let lname = "Chowdhury";
+let fullname = fname + " " + lname; //string concatnation
+console.log(fullname);
+
+let p = `  Hi  ${fname} ${lname} how are you  `; //Using template literals
+console.log(p);
+
+//Getting a single character from the string
+
+console.log(fname[0]); //Show the character at 0th index
+
+//String methods
+
+console.log(fname.toLowerCase()); //data show of fname as small letter
+console.log(fname.toUpperCase()); //data show of fname as capital letter
+console.log(
+  fullname.indexOf("C")
+); /* indexOf() method used to find the index of string. It only show that index of first character which is  duplicate */
+console.log(p.trim()); //trim() method - remove the space from first of string
+console.log(p.lastIndexOf("a")); //lastIndexOf() method used to show the last index of string. case senstive
+console.log(p.includes("Arnab")); //includes() method used to data is exist or not into the string. It return true or false. case senstive
+console.log(p.slice(0, 10)); //The slice() method returns the extracted part of a string. The slice() method does not change the original string.
+console.log(p.trim().split(" ")); //The split() method splits a string into an array of substrings
+console.log(p.length); //length() method use d to define the length of the string
+
+/*
+typeof() method used to define the type of variable
+
+== Loose equality operator
+=== Strict Equality operator
+
+*/
+a = 22;
+console.log(a + " is a " + typeof a);
+console.log(a + " is a " + typeof String(a)); // type conversion
+
+//Variable and block scope
+
+const score = 90; //It outside from function and block so that it is a global variable
+if (1) {
+  const score = 30; //It treat another variable cause it have into the block. It is local variable because it is used to inside of block
+  console.log(score);
+}
+
+//Ternary Operator
+
+let age = 34;
+let weight = 80;
+let height = 5.5;
+let result =
+  age > 18
+    ? weight >= 60 && weight <= 80
+      ? height >= 5.5 && height <= 7
+        ? "Qualify for Army"
+        : "Height is short or too High"
+      : "Weight is maximum or minimum"
+    : "Not Qualify for army";
+/* like that 
+if()
+{
+    if()
+    {
+        if()
+        { 
+
+        }
+        else
+        {
+
+        }
+    }
+    else
+    {
+
+    }
+}
+else
+{
+
+} */
+console.log(result);
+
+console.log(
+  age > 50
+    ? "Old"
+    : age > 25 && age < 50
+    ? "Adult"
+    : age >= 21 && age <= 25
+    ? "Adolescent"
+    : age < 17 && age >= 10
+    ? "Child"
+    : age >= 17 && age <= 20
+    ? "Teenage"
+    : "Baby"
+);
+
+/* like that 
+if()
+{
+
+}
+else if()
+{
+
+}
+else if()
+{
+
+}
+else if()
+{
+
+}
+else if()
+{
+
+}
+else
+{
+
+} */
+
+//Javascript user define function
+
+function show() {
+  console.log("Hello World");
+}
+
+show();
+
+/* A function expression is a way to define a function as part of an expression making it versatile for assigning to variables, passing as arguments, or invoking immediately.
+Function expressions can be named or anonymous.Frequently used in callbacks, closures, and dynamic function creation.*/
+
+let sumofdigit = function (n) {
+  let r = 0;
+  let s = 0;
+  while (n != 0) {
+    r = n % 10;
+    s = s + r;
+    n = Math.floor(n / 10); //Here Math is a object of math class and it called floor() method
+  }
+  return `Sum of digit is ` + parseInt(s);
+};
+
+console.log(sumofdigit(123));
+
+// Arrow Function - It is a special form of function expression , here function keyword not required
+
+const addofdigit = (n) => {
+  let r = 0;
+  let s = 0;
+  while (n != 0) {
+    r = n % 10;
+    s = s + r;
+    n = Math.floor(n / 10);
+  }
+  return s;
+};
+
+console.log(addofdigit(523));
+
+//Higher Order Function - Passing Function as an argument
+
+//Here I use arrow function, if you need you also use normal function
+
+const uppercase = (s) => s.toUpperCase();
+
+const lowercase = (s) => s.toLowerCase();
+
+let stringChange = (str, function_name) => function_name(str); //here passing function manage
+
+let choice = "B";
+
+switch (choice) {
+  case "A":
+    console.log(stringChange("ARNAB", lowercase)); //Here function passing as parameter
+    break;
+  case "B":
+    console.log(stringChange("arnab", uppercase)); //Here function passing as parameter. It work as callback function
+    break;
+}
+
+//Function return another function
+
+let hof = function (f) {
+  return function (l) {
+    console.log(`${f} ${l}`);
+  };
+};
+
+hof("Arnab")("Chowdhury");
+
+// Immediately invoked function expression, executed this only once
+//Syntax: (function(){})()
+
+(function (e) {
+  console.log("Hello how are you " + e);
+})("Arnab");
+
+//setTimeOut(function|code,delay,arg1,arg2, ......., arg n) : It executed once after second  setInterVal() : It executed repetedly after taking some interval
+let interval;
+function greeting(e) {
+  console.log(e + " Happy New Year");
+
+  setTimeout(function clear() {
+    clearInterval(interval);
+  }, 5000);
+}
+
+setTimeout(greeting, 5000, "Hi");
+
+interval = setInterval(greeting, 1000, "Hello");
+
+//Only normal function and var variable only hosting but let const and high order function and arrow function not hosited
+
+// Object in js
+
+//creation
+let car = {
+  color: "Black",
+  model: "HONDA",
+};
+console.log(car);
+
+//Access or Read the properties of object
+
+console.log(car.color);
+console.log(car["model"]); //here prop write inside in string
+
+//Dynamically call
+
+let prop = "model";
+console.log(car[prop]); //here we cannot use . cause prop is not propertie of car object
+
+//Modify the object
+
+car.color = "Brown";
+console.log(car);
+
+//Delete properties from object
+
+let c = delete car.color;
+console.log(car);
+
+//Declare method into the object
+let obj = {
+  add: function (a, b) {
+    return `The Addition is : ${a + b}`;
+  },
+  sub: function (a, b) {
+    return `The Substraction is :  ${a + b}`;
+  },
+  multiply: function (a, b) {
+    return `The Multiplication is :  ${a + b}`;
+  },
+  divide: function (a, b) {
+    return `The Divison is :  ${a + b}`;
+  },
+};
+//When a function call inside the context of object then it will be called method
+console.log(obj.add(10, 20));
+console.log(obj.sub(20, 10));
+console.log(obj.multiply(10, 20));
+console.log(obj.divide(20, 10));
+
+/* this keyword. this refer to the object which is called a method. Generally this keyword used in element, method and in global scope
+
+In method: Generally it refer the  object properties inside into the method of that object
+*/
+let x = "hi";
+let person = {
+  id: x,
+  name: "Leanne Graham",
+  username: "Bret",
+  email: "Sincere@april.biz",
+  street: "Kulas Light",
+  suite: "Apt. 556",
+  city: "Gwenborough",
+  zipcode: "92998-3874",
+  geo: {
+    lat: "-37.3159",
+    lng: "81.1496",
+  },
+  showdata() {
+    return `${this.id} ${this.name} ${this.street} ${this.city}`; // by using this keyword access the properties inside of object. Directly properties not access inside the object
+  },
+};
+
+console.log(person.showdata());
+
+/* foreach method in js, it is a special method where function passing as string generally it use to access the array in js */
+let arr = []; //empty array initialize
+arr = [10, 20, 30, 40];
+arr.forEach(function (i) {
+  console.log(i);
+});
+
+//Array of object
+
+let pobj = [
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+  },
+];
+
+//Access
+console.log(pobj[0]["name"]); //or
+console.log(pobj[1].name);
+
+//modify
+pobj[1].name = "Arnab Chowdhury";
+console.log(pobj[1]);
+
+//delete
+
+delete pobj[1].name;
+console.log(pobj[1]);
+console.log("---------------------------------------------");
+//Access element by using foreach
+pobj.forEach(function (e) {
+  console.log(e.username);
+});
+
+/* Math object is built in object */
+
+console.log(Math); //Show all properties of math object
+console.log(Math.abs(-89));
+
+let random = Math.random(); //Generally it return decimal value
+console.log(Math.round(random * 100));
+
+//call apply and bind in js
+
+let flightdata = {
+  name: "Air India", //this value may be dynamic
+  passenger: 700,
+  booking: [],
+  bookticket: function (passenger_name, amount) {
+    console.log(`${passenger_name} booked the ${this.name} flight`);
+    this.booking.push({
+      ticket_id: Math.round(Math.random() * 10000),
+      name_of_person: `${passenger_name}`,
+      flight_name: `${this.name}`,
+      ticketprice: `${amount}`,
+    });
+  },
+};
+flightdata.bookticket("Arnab Chowdhury", 3000);
+flightdata.bookticket("Sourav Patra", 3000);
+console.log(flightdata.booking);
+
+let childflight = {
+  name: "Air Bus", //this value may be dynamic
+  passenger: 500,
+  booking: [],
+};
+("use strict"); // which tells the perfect errors to the browser
+let book = flightdata.bookticket;
+//book("Priyam",3000);//now book is a regular function
+//now "this" value is undefine at least in strict mode
+
+//using call() method data pass from one obj to another
+
+book.call(childflight, "Priyam", 3000);
+//or
+flightdata.bookticket.call(childflight, "Priyam", 3000);
+
+console.log(childflight);
+//call() method – Calling a function with a specific this value
+function introduce() {
+  console.log(`Hi, my name is ${this.name}`);
+}
+
+let call = { name: "Bob" };
+introduce.call(call);
+
+//apply() method like as call method but here argument passing as an array format
+
+book.apply(childflight, ["Ashwini", 3000]);
+console.log(childflight);
+
+//With the bind() method, an object can borrow a method from another object.
+
+let nameObj = {
+  name: "Tony",
+};
+
+let PrintName = {
+  name: "steve",
+  sayHi: function () {
+    // Here "this" points to nameObj
+    console.log(this.name);
+  },
+};
+
+let HiFun = PrintName.sayHi.bind(nameObj);
+HiFun();
+
+// Pass by value and pass by reference
+
+let a1 = [1, 2, 3, 4, 5];
+let ref = a1;
+
+ref.shift(); //shift() this method delete the element from the first position of an array
+
+console.log(`Original Array: ${a1} Reference Array: ${ref}`);
+
+console.log(`-------------------After only passing value-----------------`);
+
+ref = [...a1]; //passing value by using spread operator
+
+ref.push(10);
+
+console.log(`Original Array: ${a1} Reference Array: ${ref}`);
+
+//for in loop only use for object iteration
+
+let carObj = {
+  model: "HONDA XUV",
+  price: 500000,
+  loc: "Tarakeswar",
+};
+let showobj = "";
+for (let properties in carObj) {
+  showobj = showobj + properties + ":" + carObj[properties] + "\n";
+}
+console.log(showobj);
+
+//The HTML DOM (Document Object Model) is a programming interface that represents the structure of a web page in a way that programming languages like JavaScript can understand and manipulate.
+//LOAD HTML -> PARSE HTML(PROCESS) -> DOM TREE
+//Browser create object of html called document object
+//In document object there is model of complete html in tree like structure
+
+//Show the all html code but js understand as like dom where element show as node of tree data structure
+
+console.log(document); //here documnet is root node or object
+
+/********************  HTML ELEMENT ACCESS ***********************************************/
+//The querySelectorAll() method returns the first element that matches a CSS selector.
+
+console.log(document.querySelector("p")); //return Node List
+//get element by tag name
+console.log(document.getElementsByTagName("p")); //return HTMLCollection
+//get element by class name
+console.log(document.getElementsByClassName("subs")); //return HTMLCollection
+//get element by id
+
+console.log(document.getElementById("content").innerText);
+
+//Access Text or HTML
+
+console.log(document.querySelector("p").innerText);
+console.log(document.querySelector("p").innerHTML);
+
+//Set Text or HTML
+
+document.querySelector("p").innerText = "Arnab  Chowdhury";
+document.querySelector("p").innerHTML = "<h1>JAVASCRIPT</h1>";
+
+//Getting and Setting the attribute - getAttribute() method
+
+var s = document.getElementById("link");
+console.log(s);
+console.log(s.getAttribute("href"));
+
+//setAttribute() method we can set the attribute dynamically by js
+
+s.setAttribute(
+  "href",
+  "https://www.w3schools.com/jsref/met_document_queryselector.asp"
+);
+
+//Adding the Inline Style by JS
+
+s.style.color = "#fff";
+s.style.background = "black";
+s.style.padding = "5px";
+s.style.border = "5px solid red";
+
+//Add - Removing - Replace the class
+
+var cl = document.getElementById("my-cls");
+console.log(cl);
+cl.classList.add("newclss");
+console.log(cl);
+cl.classList.remove("newclss");
+console.log(cl);
+cl.classList.replace("my-cls", "ARNAB");
+console.log(cl);
+
+//Parent Child Sibling
+
+//Find Child element
+let tparent = document.getElementById('pcs')
+console.log("------------------ Child Element ---------------")
+console.log(tparent.children)
+
+let arrform = Array.from(tparent.children)
+arrform.forEach(function(e){//Traverse node to node
+  console.log(e);
+})
+
+//Find parent element
+let celement = document.getElementById('pcs1')
+console.log("----------Parent Element---------");
+console.log(celement.parentElement);
+
+//Find Sibling
+//The nextElementSibling property returns the next element in the same tree level.
+console.log("----------Next Sibling---------");
+console.log(document.getElementById('sib1').nextElementSibling);
+
+console.log("----------Previous Sibling---------");
+console.log(celement.previousElementSibling);
+
+
+</script>
+</html>
+

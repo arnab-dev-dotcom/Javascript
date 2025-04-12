@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OOP JS</title>
+  </head>
+  <body></body>
+  <script>
+    //-----------------------------------Example 1------------------------
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      speak() {
+        console.log(
+          `Hello, my name is ${this.name} and I am ${this.age} years old.`
+        );
+      }
+
+      get _age() {
+        return this.age;
+      }
+      set setage(age) {
+        this.age = age;
+      }
+    }
+
+    class Arnab extends Person {
+      speak(data) {
+        console.log(data);
+        super.speak();
+      }
+    }
+
+    // Creating an instance of the class
+    const person1 = new Person("Arnab", 25);
+    person1.speak(); //
+
+    console.log(person1 instanceof Person);
+
+    const a = new Arnab("Priyam", "25");
+    a.speak("hello");
+
+    //In JavaScript, get and set are used in getter and setter methods to define how properties are accessed and modified in an object. These methods are especially useful when you want to control the access to or modification of an object's properties.
+    a.setage = 50;
+    console.log(a._age);
+
+    //-------------------------------------Example 2------------------
+
+    class Animal {
+      constructor(name) {
+        //constructor is  a special type method.It is called automatically when an instance of the class is created using the new keyword.
+        this.name = name;
+        console.log("automatically call");
+      }
+    }
+
+    class Dog extends Animal {
+      constructor(name, breed) {
+        super(name); // Calls the constructor of the parent class (Animal)
+        this.breed = breed;
+      }
+
+      info() {
+        console.log(`${this.name} is a ${this.breed}`);
+      }
+    }
+
+    const dog = new Dog("Buddy", "Golden Retriever");
+    dog.info(); // Outputs: Buddy is a Golden Retriever
+    const animalobj = new Animal();
+    console.log(animalobj);
+    const animalobj1 = new Animal("Object2");
+    console.log(animalobj1);
+
+    //-----------------------------------Example 3-----------------------
+
+    class HDFCBank {
+      #account;// it is a private propertie
+      constructor(name, openbalance) {
+        this.name = name;
+        this.openbalance = openbalance;
+        this.#account = openbalance;
+        localStorage.setItem("username", this.name);
+        localStorage.setItem("amount", this.#account);
+      }
+
+      transaction(type, amount) {
+        if (type == "DB") {
+          this.#account > amount
+            ? (this.#account = this.#account - amount)
+            : (this.#account = amount - this.#account);
+          console.log(`${amount} Amount debited from your account`);
+          return this;
+        } else {
+          this.#account > amount
+            ? (this.#account = this.#account + amount)
+            : (this.#account = amount + this.#account);
+          console.log(`${amount} Amount credited to your account`);
+          return this;
+        }
+      }
+      show() {
+        console.log(`Your Current Balance is : ${this.#account}`);
+      }
+    }
+
+    const user1 = new HDFCBank("Arnab", 5000);
+    //method chaining
+    user1.transaction("DB", 100).show();
+    user1.transaction("CR", 1000).show();
+    user1.transaction("DB", 500).show();
+    user1.transaction("DB", 1000).show();
+  </script>
+</html>

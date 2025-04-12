@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 3</title>
+</head>
+<body>
+    <h1>LOCAL STORAGE</h1>
+</body>
+<script>
+    //Local Strorage act as like database in js where data save into the browser even browser is closed. It is a object it act like as browser
+    //It generally store string data type.
+    localStorage.setItem('Name','Arnab Chowdhury')
+    localStorage.setItem('Address','Tarakeswar')//set key value data
+
+    console.log(localStorage)
+
+    //Remove data
+    localStorage.removeItem('Name')
+
+    console.log(localStorage.Address)
+
+    localStorage.clear();//All data remove from local storage
+
+    console.log(localStorage)
+
+    //Complex data structure store
+
+    const vechileobj =[{
+        modelno: 1234,
+        modelname: 'BMW'
+    },
+    {
+        modelno: 4234,
+        modelname: 'JAGUAR'
+    }]
+    console.log(vechileobj);
+    console.log(JSON.stringify(vechileobj));
+    let objectstr = JSON.stringify(vechileobj);//JSON.stringify() is used to convert a JavaScript object or value into a JSON string.
+
+    //localStorage.setItem('vechile',objectstr)
+    console.log(localStorage)
+
+    //get the stored item into the object format
+
+
+    let storeddata = JSON.parse(localStorage.getItem('vechile'));//JSON.parse() is used to convert a JSON string back into a JavaScript object.
+    console.log(storeddata)
+</script>
+</html>

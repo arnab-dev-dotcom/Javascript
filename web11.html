@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+    <h2>Array & Array Method</h2>
+    <hr />
+    <p>
+      Array is a linear data structure, In JS array hold multiple types of data
+      in contigious memory location
+    </p>
+    <b>Define Array:</b>
+    <p>In JS array define as []</p>
+    <b>push():</b>
+    <p>push() method used to Insertion element to the array</p>
+    <b>pop():</b>
+    <p>pop() method used to Deletion element from end of the array</p>
+    <b>length():</b>
+    <p>length() method is used to define the length of the array</p>
+    <b>unshift():</b>
+    <p>
+      unshift() method is used to insert the element to the begining of the
+      array
+    </p>
+    <b>shift():</b>
+    <p>
+      shift() method is used to delete the element to the begining of the array
+    </p>
+    <b>indexOf():</b>
+    <p>indexOf() method is used to find the index of an element</p>
+    <b>isArray():</b>
+    <p>isArray() method value type is array or not</p>
+    <b>join():</b>
+    <p>
+      The join() method in JavaScript is used to combine all elements of an
+      array into a single string, with a specified separator between them.
+    </p>
+    <b>slice():</b>
+    <p>
+      In JavaScript, slice() is a method used to extract a section of an array
+      or string and return it as a new array or string, without modifying the
+      original.
+    </p>
+    <b>splice():</b>
+    <p>
+      splice() modifies the original array. It can be used to add, remove, or
+      replace elements in-place.
+    </p>
+    <b>concat():</b>
+    <p>
+      In JavaScript, concat() is used to merge arrays or strings without
+      modifying the originals. It returns a new array or string.
+    </p>
+    <b>flat():</b>
+    <p>
+      flat() in JavaScript is used to flatten nested arrays — basically, it
+      removes layers of nesting and returns a new, one-dimensional array
+    </p>
+  </head>
+  <body></body>
+  <script>
+    let arr = new Array();
+    //push
+    arr.push(10);
+    arr.push(20);
+    arr.push(30);
+    arr.push(40);
+    arr.push(50);
+    arr.push(60);
+    arr.push("Arnab Chowdhury");
+    console.log(arr);
+    //pop
+    arr.pop();
+    arr.pop();
+    console.log(arr);
+    //unshift
+    arr.unshift(200);
+    console.log(arr);
+    //shift
+    arr.shift();
+    console.log(arr);
+    //indexof
+    console.log("Position of an element: " + arr.indexOf(40));
+    console.log("Length of the array: " + arr.length);
+    console.log("Using join method: " + arr.join("-"));
+    //slice
+    let colors = ["red", "green", "blue", "yellow"];
+    let sliced = colors.slice(1, 3);
+    console.log("Sliced Array:", sliced, "Original Array", colors); // ['green', 'blue']
+    //splice
+    colors.splice(1, 0, "black"); //insert the element to 1th position (position,0,element)
+    console.log(colors);
+    colors.splice(3, 1); //delete the element (postion,how many element you delete)
+    console.log(colors);
+    colors.splice(3, 2, "Gourab", "Arnab"); //replace the element (postion,how many element you replace,no of elements)
+    console.log(colors);
+    //concat
+    let newarr = colors.concat(arr);
+    console.log(newarr);
+    //spread operator instaed of concat
+    let newarr2 = [...colors, ...arr];
+    console.log("ES6 Spread Operator:", newarr2);
+    //using flat
+    let farr = [10,20,30,[100,200,[235,5897,['Arnab']]]];
+    let newarr3 = farr.flat(Infinity);
+    console.log('Nested Array combine: ',newarr3,'Nested Array: ',farr)
+    console.log('It is Array', Array.isArray(newarr3));  
+  </script>
+</html>

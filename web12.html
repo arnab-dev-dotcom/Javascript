@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Modules</title>
+  </head>
+  <body>
+    <h2>MODULES</h2>
+    <p>JavaScript modules are a way to break your code into reusable pieces</p>
+    <b>Why Use Modules?</b>
+    <p>
+      Code Reusability: Split code into files that can be reused across
+      projects. <br />
+      Encapsulation: Each module has its own scope. <br />Maintainability:
+      Smaller files are easier to maintain.
+    </p>
+    <p>Note: In HTML, make sure to add type="module" to the script tag:</p>
+    <p>
+      In JavaScript, default is a keyword used when exporting or importing a
+      default value from a module. It allows you to export one primary thing
+      from a module, and then import it without using curly braces. You can change the name also
+    </p>
+    <p>A module cannot have multiple default export</p>
+  </body>
+  <script type="module">
+    import obj, { add } from "/module/add.js";
+    console.log(add(10, 20, 30)); //here function or variable name not rename
+    console.log(obj.multiply(10, 10));  //here function import as object
+
+    console.log(obj.name)
+  </script>
+</html>

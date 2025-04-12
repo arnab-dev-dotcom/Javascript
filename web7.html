@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <h1>Promise</h1>
+    <p>
+      A Promise in JavaScript is an object that represents the eventual
+      completion or failure of an asynchronous operation and its resulting
+      value. Promises provide a cleaner, more powerful way to handle
+      asynchronous code compared to callback functions, making the code more
+      readable and maintainable.
+    </p>
+    <ul>
+      <li>
+        Avoiding Callback Hell: Makes asynchronous code easier to read and
+        manage by chaining .then() calls instead of deeply nested callbacks.
+      </li>
+      <li>
+        Error Handling: Provides a clean way to handle errors with .catch()
+        instead of using multiple try-catch blocks.
+      </li>
+      <li>
+        Better Control: Enables chaining multiple asynchronous operations in a
+        sequence.
+      </li>
+    </ul>
+    <p>
+      Promises make asynchronous programming cleaner and easier to manage
+      compared to traditional callbacks. They allow for chaining of asynchronous
+      operations and provide robust error handling mechanisms.
+    </p>
+    <p>Promises have 3 state - Pending -> Resolve or Reject<br>
+       and promise have 2 listner - then() and catch() these have callback function
+        
+    </p>
+  </body>
+  <script>
+    const myPromise = new Promise((resolve, reject) => {
+      const success = true;
+
+      if (success) {
+        resolve("Operation succeeded!"); // Resolve the promise with a value
+      } else {
+        reject("Operation failed!"); // Reject the promise with an error message
+      }
+    });
+    //console.log(myPromise);
+    myPromise
+      .then(() => {
+        console.log("Everything Ok");
+      })
+      .catch(() => {
+        console.log("Something Went Wrong");
+      });
+
+    let newObj = [
+      { name: "Arnab", Designation: "Software Engineer" },
+      { name: "Sourav", Designation: "Software Developer" },
+    ];
+
+    let showinlist = () => {
+      setTimeout(() => {
+        newObj.forEach((value) => {
+          console.log(value);
+        });
+      }, 1000);
+    };
+    let addobj = (newdata) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          newObj.push(newdata);
+          let error = true;
+          if (!error) {
+            resolve();
+          } else {
+            reject('Something went wrong');
+          }
+        }, 3000);
+      });
+    };
+
+    addobj({ name: "Priyam", Designation: "Administrator" }).then(showinlist).error(yourerror => console.log(yourerror));
+
+    //In this code we create dependencie first execute showinlist() function then addobj() but we handle smartly
+  </script>
+</html>
